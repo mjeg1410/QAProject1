@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block nav_here %}active{% endblock %}{% block nav_hereout %}active{% endblock %}
+{% block body_content %}
+<h1>Campaigns: </h1>
+    {% if Campaigns %}
+        {% for campaign in Campaigns %}
+        <div>
+            <h3>{{ campaign.campaign_name }}</h3>
+            <span>by <i>{{ campaign.dungeonmaster.first_name }} {{ campaign.dungeonmaster.last_name }}</i></span>
+            <span>on <i>{{ campaign.date_created }}</i></span>
+            <p>{{ campaign.setting }}</p>
+        </div>
+        {% endfor %}<!--Campaigns looking for players/players with characters looking for Campaigns-->
+        {% else %}
+        <p>There are no campaigns currently.</p>
+    {% endif %}
+    <h1>Characters: </h1>
+    {% if Characters %}
+        {% for character in Characters %}
+        <div>
+            <h3>{{ character.first_name }} {{ character.last_name }}</h3>
+            <span>by <i>{{ character.creator.first_name }} {{ character.creator.last_name }}</i></span>
+            <span>on <i>{{ character.date_rolled }}</i></span>
+            <p>{{ character.background }}</p>
+        </div>
+        {% endfor %}<!--Campaigns looking for players/players with characters looking for Campaigns-->
+    {% else %}
+        <p>There are no characters currently.</p>
+        {% endif %}
+{% endblock body_content %}

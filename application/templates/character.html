@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block nav_ch %}active{% endblock %}
+{% block body_content %}
+<div class="form">
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+		<div class="form-group">
+			{{ form.character_first_name.label }}
+			{{ form.character_first_name }}
+			{% if form.character_first_name.errors %}
+			<div class="error">
+				{% for error in form.character_first_name.errors %}
+				    <span>{{ error }}</span>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+		<br>
+		<div class="form-group">
+            {{ form.character_last_name.label }}
+			{{ form.character_last_name }}
+			{% if form.character_last_name.errors %}
+			<div class="error">
+				{% for error in form.character_last_name.errors %}
+				    <span>{{ error }}</span>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+		<br>
+		<div class="form-group">
+			
+        </div>
+        <br>
+            <div class="form-group">
+                {{ form.character_background.label }}
+                {{ form.character_background }}
+                {% if form.character_background.errors %}
+                <div class="error">
+                    {% for error in form.character_background.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form_group'>
+                {{ form.submit }}
+            </div>
+	</form>
+</div>
+{% endblock body_content %}
+

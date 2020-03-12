@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block nav_cam %}active{% endblock %}
+{% block body_content %}
+<div class="form">
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+		<div class="form-group">
+			{{ form.campaign_name.label }}
+			{{ form.campaign_name }}
+			{% if form.campaign_name.errors %}
+			<div class="error">
+				{% for error in form.campaign_name.errors %}
+				    <span>{{ error }}</span>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+		<br>
+		<div class="form-group">
+			{{ form.setting.label }}
+			{{ form.setting }}
+			{% if form.setting.errors %}
+			<div class="error">
+				{% for error in form.setting.errors %}
+				    <span>{{ error }}</span>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+		<br>
+		<div class="form-group">
+		    {{ form.submit }}
+		</div>
+	</form>
+</div>
+{% endblock body_content %}
+
