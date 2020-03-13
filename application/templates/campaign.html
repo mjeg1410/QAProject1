@@ -19,7 +19,8 @@
 		<div class="form-group">
 			{{ form.setting.label }}
 			{{ form.setting }}
-			{% if form.setting.errors %}
+			{% if form.setting
+				.errors %}
 			<div class="error">
 				{% for error in form.setting.errors %}
 				    <span>{{ error }}</span>

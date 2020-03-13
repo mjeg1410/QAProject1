@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from application.models import Players, Characters, Campaigns
+from application.models import Players, Characters, Campaigns, Instances
 from flask_login import current_user
 #--------------------------------------------------------------------------------------------
 #Character creation form
@@ -31,6 +31,20 @@ class CampaignForm(FlaskForm):
     setting = StringField('Campaign setting',
         validators= [
             DataRequired()
+        ])
+    submit = SubmitField('Create')
+#--------------------------------------------------------------------------------------------
+#Instance creation form
+class InstanceForm(FlaskForm):
+    instance_name = StringField('Instance name',
+        validators= [
+            DataRequired(),
+            Length(min=3, max=30)
+        ])
+    location = StringField('Game location',
+        validators= [
+            DataRequired(),
+            Length(min=25)
         ])
     submit = SubmitField('Create')
 #--------------------------------------------------------------------------------------------
