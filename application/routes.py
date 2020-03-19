@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request
 from application import app, db, bcrypt
-from application.models import Campaigns, Players, Characters,
-from application.forms import CharacterForm, CampaignForm, RegistrationForm, LoginForm, UpdateAccountForm, 
+from application.models import Campaigns, Players, Characters
+from application.forms import CharacterForm, CampaignForm, RegistrationForm, LoginForm, UpdateAccountForm 
 from flask_login import login_user, current_user, logout_user, login_required
 #---------------------------------------------------------------------------------------------------
 @app.route('/')
