@@ -10,7 +10,6 @@ class Characters(db.Model):
     date_rolled = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     player_id = db.Column(db.Integer, db.ForeignKey('players.id'), nullable=False) 
     background = db.Column(db.String(500), nullable=True)
-    questline = db.relationship('Instances', backref='rlpcs', lazy=True)
 
     def __repr__(self):
         return ''.join([
@@ -23,7 +22,6 @@ class Campaigns(db.Model):
     campaign_name = db.Column(db.String(100), nullable=False, unique=True)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     player_id = db.Column(db.Integer, db.ForeignKey('players.id'), nullable=False)
-    quest = db.relationship('Instances', backref='world', lazy=True)
     setting = db.Column(db.String(500), nullable=False)
     
     def __repr__(self):
@@ -49,17 +47,4 @@ class Players(db.Model, UserMixin):
         'Email: ', self.email, '\r\n',
         'Name: ', self.first_name, ' ', self.last_name])
 #--------------------------------------------------------------------------------------------
-class Instances(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    Instance_name = db.Column(db.String(100), nullable=False, unique=True)
-    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    campaign_id = db.Column(db.Integer, db.ForeignKey('campaigns.id'), nullable=False)
-    character_id = db.Column(db.Integer, db.ForeignKey('characters.id'), nullable=False)
-    location = db.Column(db.String(500), nullable=False)
-    
-    def __repr__(self):
-        return ''.join([
-            'Instance ID: ', self.instance_id, '\r\n',
-            'Instance: ', self.instance_name, '\r\n', self.location
-            ])
 #--------------------------------------------------------------------------------------------

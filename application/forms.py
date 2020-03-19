@@ -34,19 +34,6 @@ class CampaignForm(FlaskForm):
         ])
     submit = SubmitField('Create')
 #--------------------------------------------------------------------------------------------
-#Instance creation form
-class InstanceForm(FlaskForm):
-    instance_name = StringField('Instance name',
-        validators= [
-            DataRequired(),
-            Length(min=3, max=30)
-        ])
-    location = StringField('Game location',
-        validators= [
-            DataRequired(),
-            Length(min=25)
-        ])
-    submit = SubmitField('Create')
 #--------------------------------------------------------------------------------------------
 class RegistrationForm(FlaskForm):
     first_name = StringField('First Name',
