@@ -46,8 +46,8 @@ class InstanceForm(FlaskForm):
             DataRequired(),
             Length(min=25)
         ])
-        campaign_id = SelectField(Query.campaigns.all(campaign.id))
-        character_id = SelectField(Query.characters.all(character.id))
+    campaign_id = SelectField(Query.campaigns.all(campaign.id))
+    character_id = SelectField(Query.characters.all(character.id))
     submit = SubmitField('Create')
 #--------------------------------------------------------------------------------------------
 class RegistrationForm(FlaskForm):
