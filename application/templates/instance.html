@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block nav_inst %}active{% endblock %}
+{% block body_content %}
+<div class="form">
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+		<div class="form-group">
+			{{ form.instance_name.label }}
+			{{ form.instance_name }}
+			{% if form.instance_name.errors %}
+			<div class="error">
+				{% for error in form.instance_name.errors %}
+				    <span>{{ error }}</span>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+		<div class="form-group">
+			
+        </div>
+        <br>
+            <div class="form-group">
+                {{ form.instance_location.label }}
+                {{ form.instance_location }}
+                {% if form.instance_location.errors %}
+                <div class="error">
+                    {% for error in form.instance_location.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                {{ form.campaign_id.label }}
+                {{ form.campaign_id }}
+                {% if form.campaign_id.errors %}
+                <div class="error">
+                    {% for error in form.campaign_id.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                {{ form.character_id.label }}
+                {{ form.character_id }}
+                {% if form.character_id.errors %}
+                <div class="error">
+                    {% for error in form.character_id.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form_group'>
+                {{ form.submit }}
+            </div>
+
+	</form>
+</div>
+{% endblock body_content %}
+

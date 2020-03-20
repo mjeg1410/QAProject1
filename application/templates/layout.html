@@ -42,6 +42,8 @@ body {
       <a class="{% block nav_acc %}{% endblock %}"href="{{ url_for('account') }}">Account</a>
       <a class="{% block nav_ch %}{% endblock %}"href="{{ url_for('character') }}">Character</a>
       <a class="{% block nav_cam %}{% endblock %}"href="{{ url_for('campaign') }}">Campaign</a>
+      <a class="{% block nav_inst %}{% endblock %}"href="{{ url_for('instance') }}">Instance</a>
+
       <a href= /logout>Logout</a>
     {% else %}
     <a class="{% block nav_hereout %}{% endblock %}" href="{{ url_for('home') }}">Home</a>

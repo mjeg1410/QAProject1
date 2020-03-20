@@ -10,7 +10,7 @@ def home():
     characterData = Characters.query.all()
     campaignData = Campaigns.query.all()
     instanceData = Instances.query.all()
-    return render_template('home.html', title='Home', Instances=instanceData)
+    return render_template('home.html', title='Home', Istances=instanceData, Characters = characterData, Campaigns = campaignData)
 #---------------------------------------------------------------------------------------------------
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -124,3 +124,22 @@ def account_delete():
     db.session.commit()
     return redirect(url_for('register'))
 #---------------------------------------------------------------------------------------------------
+@app.route('/InstanceCreation', methods=['GET', 'POST'])#POSTS SUBSTITUTED FOR CHARACTERS, SECOND MODULE ROUTE FOR CAMPAIGN CREATION WITH SIMILARITY
+@login_required
+def instance():
+    form = InstanceForm()
+    if form.validate_on_submit():
+        instanceData = Instances(
+            instance_name=form.instance_name.data,
+            location=form.location.data,    
+        )
+
+        db.session.add(instanceData)
+        db.session.commit()
+
+        return redirect(url_for('home'))
+
+    else:
+        print(form.errors)
+
+    return render_template('instance.html', title='Instance Creation', form=form)

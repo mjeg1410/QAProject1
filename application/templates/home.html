@@ -10,15 +10,15 @@
             <span>on <i>{{ campaign.date_created }}</i></span>
             <p>{{ campaign.setting }}</p>
         </div>
-        {% endfor %}<!--Campaigns looking for players/players with characters looking for Campaigns-->
-        {% else %}
+            {% endfor %}<!--Campaigns looking for players/players with characters looking for Campaigns-->
+    {% else %}
         <p>There are no campaigns currently.</p>
     {% endif %}
     <h1>Characters: </h1>
     {% if Characters %}
         {% for character in Characters %}
         <div>
-            <h3>{{ character.first_name }} {{ character.last_name }}</h3>
+            <h3>{{ character.character_first_name }} {{ character.character_last_name }}</h3>
             <span>by <i>{{ character.creator.first_name }} {{ character.creator.last_name }}</i></span>
             <span>on <i>{{ character.date_rolled }}</i></span>
             <p>{{ character.background }}</p>

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Players, Characters, Campaigns, Instances
 from flask_login import current_user
@@ -46,6 +46,14 @@ class InstanceForm(FlaskForm):
             DataRequired(),
             Length(min=25)
         ])
+    character_id = SelectField()
+    campaign_id = SelectField()
+    def __init__(self, *args, **kwargs):
+        form = super(InstanceForm, self).__init__(*args, **kwargs)
+        form.campaign_id.choices = [(campaign.id) for campaign in Campaigns.query.all()]
+        form.character_id.choices = [(character.id) for character in Characters.query.all()]
+        return form
+
     submit = SubmitField('Create')
 #--------------------------------------------------------------------------------------------
 class RegistrationForm(FlaskForm):
