@@ -127,6 +127,8 @@ def account_delete():
 @app.route('/InstanceCreation', methods=['GET', 'POST'])#POSTS SUBSTITUTED FOR CHARACTERS, SECOND MODULE ROUTE FOR CAMPAIGN CREATION WITH SIMILARITY
 @login_required
 def instance():
+    campchoices = Campaigns.query.all
+    charchoices = Characters.query.all
     form = InstanceForm()
     if form.validate_on_submit():
         instanceData = Instances(
