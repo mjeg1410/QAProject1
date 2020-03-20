@@ -3,6 +3,7 @@ from wtforms import StringField, SubmitField, PasswordField, BooleanField, Selec
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Players, Characters, Campaigns, Instances
 from flask_login import current_user
+from sqlalchemy import Query
 #--------------------------------------------------------------------------------------------
 #Character creation form
 class CharacterForm(FlaskForm):
@@ -36,8 +37,8 @@ class CampaignForm(FlaskForm):
 #--------------------------------------------------------------------------------------------
 #Instance creation form
 class InstanceForm(FlaskForm):
-    charchoices = Characters.query.filter_by(character_id)
-    campchoices = Campaigns.query.filter_by(campaign_id)
+    chchoices = Query.Characters(Characters.character_id)
+    cachoices = Query.Campaigns(Campaigns.campaign_id)
 
     instance_name = StringField('Instance name',
         validators= [
@@ -49,8 +50,8 @@ class InstanceForm(FlaskForm):
             DataRequired(),
             Length(min=25)
         ])
-    campaign_id = SelectField(campchoices)
-    character_id = SelectField(charchoices)
+    campaign_id = SelectField(cachoices)
+    character_id = SelectField(cachoices)
     submit = SubmitField('Create')
 #--------------------------------------------------------------------------------------------
 class RegistrationForm(FlaskForm):
