@@ -131,7 +131,7 @@ def instance():
     if form.validate_on_submit():
         instanceData = Instances(
             instance_name=form.instance_name.data,
-            location=form.location.data,   
+            location=form.instance_location.data,   
         )
 
         db.session.add(instanceData)
