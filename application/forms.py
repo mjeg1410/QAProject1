@@ -3,7 +3,6 @@ from wtforms import StringField, SubmitField, PasswordField, BooleanField, Selec
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Players, Characters, Campaigns, Instances
 from flask_login import current_user
-from sqlalchemy import Query
 #--------------------------------------------------------------------------------------------
 #Character creation form
 class CharacterForm(FlaskForm):
