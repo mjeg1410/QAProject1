@@ -32,30 +32,6 @@
             </div>
             <br>
             <br>
-            <div class="form-group">
-                {{ form.campaign_id.label }}
-                {{ form.campaign_id }}
-                {% if form.campaign_id.errors %}
-                <div class="error">
-                    {% for error in form.campaign_id.errors %}
-                        <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% endif %}
-            </div>
-            <br>
-            <br>
-            <div class="form-group">
-                {{ form.character_id.label }}
-                {{ form.character_id }}
-                {% if form.character_id.errors %}
-                <div class="error">
-                    {% for error in form.character_id.errors %}
-                        <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% endif %}
-            </div>
             <br>
             <div class='form_group'>
                 {{ form.submit }}
