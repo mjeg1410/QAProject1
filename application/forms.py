@@ -41,7 +41,7 @@ class InstanceForm(FlaskForm):
             DataRequired(),
             Length(min=3, max=30)
         ])
-    location = StringField('Game location',
+    instance_location = StringField('Game location',
         validators= [
             DataRequired(),
             Length(min=25)
