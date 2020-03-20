@@ -130,7 +130,7 @@ def instance():
     form = InstanceForm()
     if form.validate_on_submit():
         instanceData = Instances(
-            instance_name=form.instance_name.data,
+            Instance_name=form.instance_name.data,
             location=form.instance_location.data,   
         )
 
