@@ -36,8 +36,8 @@ class CampaignForm(FlaskForm):
 #--------------------------------------------------------------------------------------------
 #Instance creation form
 class InstanceForm(FlaskForm):
-    chchoices = Characters.character_id
-    cachoices = Campaigns.campaign_id
+    chchoices = Characters.id
+    cachoices = Campaigns.id
 
     instance_name = StringField('Instance name',
         validators= [
