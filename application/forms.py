@@ -46,14 +46,6 @@ class InstanceForm(FlaskForm):
             DataRequired(),
             Length(min=25)
         ])
-    character_id = SelectField()
-    campaign_id = SelectField()
-    def __init__(self, *args, **kwargs):
-        form = super(InstanceForm, self).__init__(*args, **kwargs)
-        form.campaign_id.choices = [(campaign.id) for campaign in Campaigns.query.all()]
-        form.character_id.choices = [(character.id) for character in Characters.query.all()]
-        return form
-
     submit = SubmitField('Create')
 #--------------------------------------------------------------------------------------------
 class RegistrationForm(FlaskForm):

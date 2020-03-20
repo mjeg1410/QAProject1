@@ -3,6 +3,8 @@ from application import app, db, bcrypt
 from application.models import Campaigns, Players, Characters, Instances
 from application.forms import CharacterForm, CampaignForm, RegistrationForm, LoginForm, UpdateAccountForm, InstanceForm
 from flask_login import login_user, current_user, logout_user, login_required
+from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField
+
 #---------------------------------------------------------------------------------------------------
 @app.route('/')
 @app.route('/home')
@@ -126,12 +128,18 @@ def account_delete():
 #---------------------------------------------------------------------------------------------------
 @app.route('/InstanceCreation', methods=['GET', 'POST'])#POSTS SUBSTITUTED FOR CHARACTERS, SECOND MODULE ROUTE FOR CAMPAIGN CREATION WITH SIMILARITY
 @login_required
-def instance():
-    form = InstanceForm()
+def instance(self, *args, **kwargs):
+        form = super(InstanceForm, self).__init__(*args, **kwargs)
+        form.campaign_id.choices = [(campaign.id) for campaign in Campaigns.query.all()]
+        form.character_id.choices = [(character.id) for character in Characters.query.all()]
+        return form
     if form.validate_on_submit():
         instanceData = Instances(
             instance_name=form.instance_name.data,
-            location=form.location.data,    
+            location=form.location.data,
+            character_id = SelectField()
+
+
         )
 
         db.session.add(instanceData)
