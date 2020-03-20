@@ -129,24 +129,19 @@ def account_delete():
 @app.route('/InstanceCreation', methods=['GET', 'POST'])#POSTS SUBSTITUTED FOR CHARACTERS, SECOND MODULE ROUTE FOR CAMPAIGN CREATION WITH SIMILARITY
 @login_required
 def instance(self, *args, **kwargs):
-        form = super(InstanceForm, self).__init__(*args, **kwargs)
-        form.campaign_id.choices = [(campaign.id) for campaign in Campaigns.query.all()]
-        form.character_id.choices = [(character.id) for character in Characters.query.all()]
-        return form
+    form = super(InstanceForm, self).__init__(*args, **kwargs)
+    form.campaign_id.choices = [(campaign.id) for campaign in Campaigns.query.all()]
+    form.character_id.choices = [(character.id) for character in Characters.query.all()]
+    return form
     if form.validate_on_submit():
         instanceData = Instances(
-            instance_name=form.instance_name.data,
-            location=form.location.data,
-            character_id = SelectField()
-
-
+        instance_name=form.instance_name.data,
+        location=form.location.data,
+        character_id = SelectField()
         )
-
         db.session.add(instanceData)
         db.session.commit()
-
         return redirect(url_for('home'))
-
     else:
         print(form.errors)
 
