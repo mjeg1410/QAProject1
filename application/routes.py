@@ -147,7 +147,7 @@ def edit_instancechar(request, id):
     db.session.add(instanceData)
     db.session.commit()
 
-        return redirect(url_for('home'))
+    return redirect(url_for('home'))
 
     else:
         print(form.errors)
