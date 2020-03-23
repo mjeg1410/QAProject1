@@ -140,7 +140,7 @@ def instance():
     for character in characters:
         characters_id.append(character.id)
         form.characters_id.choices = [characters_id]
-    if form.validate_on_submit():
+    if form.validate_on_submit(self):
         instanceData = Instances(
             Instance_name=form.instance_name.data,
             location=form.instance_location.data,
