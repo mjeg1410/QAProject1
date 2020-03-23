@@ -144,8 +144,8 @@ def edit_instancechar(request, id):
     form = InstanceForm(request.POST, obj=character)
     form.character_id.choices = [(c.id) for c in Characters.query.order_by('id')]
 
-        db.session.add(instanceData)
-        db.session.commit()
+    db.session.add(instanceData)
+    db.session.commit()
 
         return redirect(url_for('home'))
 
