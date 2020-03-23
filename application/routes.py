@@ -128,11 +128,11 @@ def account_delete():
 @login_required
 def instance():
     campaign_id = Campaigns.query.get('id')
-    form = InstanceForm(request.post, obj=campaign_id)
+    form = InstanceForm(request.form, obj=campaign_id)
     form.campaign_id.choices = [(c.id) for c in Campaigns.query.order_by('id')]
 
     character_id = Characters.query.get(id)
-    form = InstanceForm(request.post, obj=character_id)
+    form = InstanceForm(request.form, obj=character_id)
     form.character_id.choices = [(c.id) for c in Characters.query.order_by('id')]
     if form.validate_on_submit():
         instanceData = Instances(
