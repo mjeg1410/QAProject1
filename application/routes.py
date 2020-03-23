@@ -129,17 +129,17 @@ def account_delete():
 def instance():
     campaign = Campaigns.query.get(id)
     form = InstanceForm(request.POST, obj=campaign)
-    form.campaign_id.choices = [(c.id) for c in Campaigns.query.order_by('Campaign.id.data')]
+    form.campaign_id.choices = [(c.id) for c in Campaigns.query.order_by('id')]
 
     character = Characters.query.get(id)
     form = InstanceForm(request.POST, obj=character)
-    form.character_id.choices = [(c.id) for c in Characters.query.order_by('Character.id.data')]
+    form.character_id.choices = [(c.id) for c in Characters.query.order_by('id')]
     if form.validate_on_submit():
         instanceData = Instances(
             Instance_name=form.instance_name.data,
             location=form.instance_location.data,
-            campaign_id=form.campaign_id.data,
-            character_id=form.character_id.data
+            campaign_id=form.campaign.data,
+            character_id=form.character.data
         )
         db.session.add(instanceData)
         db.session.commit()
