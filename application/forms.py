@@ -47,8 +47,8 @@ class InstanceForm(FlaskForm):
             DataRequired(),
             Length(min=25)
         ])
-    campaigns_id = SelectField(u'Campaign',coerce=int, validators=[InputRequired])
-    characters_id = SelectField(u'Character', coerce=int, validators=[InputRequired])
+    campaigns_id = SelectField(u'Campaign',choices=campaigns_id,coerce=int, validators=[InputRequired])
+    characters_id = SelectField(u'Character',choices=characters_id, coerce=int, validators=[InputRequired])
     submit = SubmitField('Create')
 #--------------------------------------------------------------------------------------------
 class RegistrationForm(FlaskForm):
