@@ -16,3 +16,10 @@ The Kanban style trello board above lists the decided user stories for the proje
 <br>
 <br>
 The table linked above gives a brief summary of threats to user information, preservation of data and intergrity of data.
+<a name="depl"></a>
+## Deployment
+
+The build, test and deployment process was automated using Jenkins, with a webhook to GitHub which was triggered with every push event.
+
+This application can be deployed both locally and externally through a virtual machine.
+![Deployment Pipeline](CIPipe.png)
