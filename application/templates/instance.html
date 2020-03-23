@@ -34,7 +34,11 @@
             <br>
             <div class="form-group">
                 {{ form.campaigns_id.label }}
-                <select form="campaigns_id">Campaign id</select>
+                <select form="campaigns_id">
+                {% for choice in campaigns_id %}
+                <option value="{{ choice }}">{{ choice[1] }}</option>
+                { endfor }
+                </select>
                 </div>
             <br>
             <br>
