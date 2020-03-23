@@ -133,7 +133,8 @@ def instance():
             Instance_name=form.instance_name.data,
             location=form.instance_location.data,
         )
-
+    else:
+        print(form.errors)
 def edit_instancecamp(request, id):
     campaign = Campaigns.query.get(id)
     form = InstanceForm(request.POST, obj=campaign)
@@ -148,8 +149,4 @@ def edit_instancechar(request, id):
     db.session.commit()
 
     return redirect(url_for('home'))
-
-    else:
-        print(form.errors)
-
     return render_template('instance.html', title='Instance Creation', form=form)
