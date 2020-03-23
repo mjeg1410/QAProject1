@@ -36,7 +36,7 @@
             <div class="form-group">
                 {{ form.campaigns_id.label }}
                 <select name="campaigns_id" class="form-control">
-                    {% for choice in campaigns_id.choices %}
+                    {% for choice in InstanceForm.campaigns_id.choices %}
                     <option value="{{ choice }}">{{ choice[1] }}</option>
                     {% endfor %}
                   </select>
