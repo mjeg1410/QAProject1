@@ -144,8 +144,8 @@ def instance():
         instanceData = Instances(
             Instance_name=form.instance_name.data,
             location=form.instance_location.data,
-            campaign_id=form.campaign_id.data,
-            character_id=form.character_id.data
+            campaign_id=form.campaigns_id.data,
+            character_id=form.characters_id.data
         )
         db.session.add(instanceData)
         db.session.commit()
