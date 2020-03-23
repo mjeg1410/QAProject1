@@ -130,14 +130,14 @@ def instance():
     campaigns = Campaigns.query.all()
     campaigns_id = []
     for campaign in campaigns:
-        campaigns_id.append(campaigns.id)
+        campaigns_id.append(campaign.id)
     form.campaign_id.choices = [campaigns_id]
     print ("-------------------------------------------------------------------------------------------------")
     print (campaigns_id)
     characters = Characters.query.all()
     characters_id = []
     for character in characters:
-        characters_id.append(characters.id)
+        characters_id.append(character.id)
     form.character_id.choices = [characters_id]
     if form.validate_on_submit():
         instanceData = Instances(
