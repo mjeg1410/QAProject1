@@ -127,26 +127,26 @@ def account_delete():
 @app.route('/InstanceCreation', methods=['GET', 'POST'])#POSTS SUBSTITUTED FOR CHARACTERS, SECOND MODULE ROUTE FOR CAMPAIGN CREATION WITH SIMILARITY
 @login_required
 def instance():
-    form = InstanceForm()
+    form = InstanceForm(request,id)
+    campaign = Campaigns.query.get(id)
+    form = InstanceForm(request.POST, obj=campaign)
+    form.campaign_id.choices = [(c.id) for c in Campaigns.query.order_by('id')]
+
+    character = Characters.query.get(id)
+    form = InstanceForm(request.POST, obj=character)
+    form.character_id.choices = [(c.id) for c in Characters.query.order_by('id')]
     if form.validate_on_submit():
         instanceData = Instances(
             Instance_name=form.instance_name.data,
             location=form.instance_location.data,
         )
+        db.session.add(instanceData)
+        db.session.commit()
+
+        return redirect(url_for('home'))
+
     else:
         print(form.errors)
-def edit_instancecamp(request, id):
-    campaign = Campaigns.query.get(id)
-    form = InstanceForm(request.POST, obj=campaign)
-    form.campaign_id.choices = [(c.id) for c in Campaigns.query.order_by('id')]
 
-def edit_instancechar(request, id):
-    character = Characters.query.get(id)
-    form = InstanceForm(request.POST, obj=character)
-    form.character_id.choices = [(c.id) for c in Characters.query.order_by('id')]
 
-    db.session.add(instanceData)
-    db.session.commit()
-
-    return redirect(url_for('home'))
     return render_template('instance.html', title='Instance Creation', form=form)
