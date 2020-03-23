@@ -130,7 +130,8 @@ def instance():
     campaign_id = Campaigns.query.get('id')
     form = InstanceForm(request.form, obj=campaign_id)
     form.campaign_id.choices = [(c.id) for c in Campaigns.query.order_by('id')]
-
+    print ("-------------------------------------------------------------------------------------------------")
+    print (campaign_id)
     character_id = Characters.query.get('id')
     form = InstanceForm(request.form, obj=character_id)
     form.character_id.choices = [(c.id) for c in Characters.query.order_by('id')]
