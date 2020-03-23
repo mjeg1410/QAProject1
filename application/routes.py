@@ -127,19 +127,19 @@ def account_delete():
 @app.route('/InstanceCreation', methods=['GET', 'POST'])#POSTS SUBSTITUTED FOR CHARACTERS, SECOND MODULE ROUTE FOR CAMPAIGN CREATION WITH SIMILARITY
 @login_required
 def instance():
-    campaign = Campaigns.query.get('id')
-    form = InstanceForm(POST, obj=campaign)
+    campaign_id = Campaigns.query.get('id')
+    form = InstanceForm(request.post, obj=campaign_id)
     form.campaign_id.choices = [(c.id) for c in Campaigns.query.order_by('id')]
 
-    character = Characters.query.get(id)
-    form = InstanceForm(POST, obj=character)
+    character_id = Characters.query.get(id)
+    form = InstanceForm(request.post, obj=character_id)
     form.character_id.choices = [(c.id) for c in Characters.query.order_by('id')]
     if form.validate_on_submit():
         instanceData = Instances(
             Instance_name=form.instance_name.data,
             location=form.instance_location.data,
-            campaign_id=form.campaign.data,
-            character_id=form.character.data
+            campaign_id=form.campaign_id.data,
+            character_id=form.character_id.data
         )
         db.session.add(instanceData)
         db.session.commit()
