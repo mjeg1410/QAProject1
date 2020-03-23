@@ -134,12 +134,12 @@ def instance():
             location=form.instance_location.data,
         )
 
- def edit_instancecamp(request, id):
+def edit_instancecamp(request, id):
     campaign = Campaigns.query.get(id)
     form = InstanceForm(request.POST, obj=campaign)
     form.campaign_id.choices = [(c.id) for c in Campaigns.query.order_by('id')]
 
- def edit_instancechar(request, id):
+def edit_instancechar(request, id):
     character = Characters.query.get(id)
     form = InstanceForm(request.POST, obj=character)
     form.character_id.choices = [(c.id) for c in Characters.query.order_by('id')]
