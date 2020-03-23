@@ -132,9 +132,17 @@ def instance():
         instanceData = Instances(
             Instance_name=form.instance_name.data,
             location=form.instance_location.data,
-            campaign_id=form.campaign_id.data,
-            character_id=form.character_id.data 
         )
+
+ def edit_instancecamp(request, id):
+    campaign = Campaigns.query.get(id)
+    form = InstanceForm(request.POST, obj=campaign)
+    form.campaign_id.choices = [(c.id) for c in Campaigns.query.order_by('id')]
+
+ def edit_instancechar(request, id):
+    character = Characters.query.get(id)
+    form = InstanceForm(request.POST, obj=character)
+    form.character_id.choices = [(c.id) for c in Characters.query.order_by('id')]
 
         db.session.add(instanceData)
         db.session.commit()

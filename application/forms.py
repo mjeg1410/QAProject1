@@ -36,8 +36,6 @@ class CampaignForm(FlaskForm):
 #--------------------------------------------------------------------------------------------
 #Instance creation form
 class InstanceForm(FlaskForm):
-    chchoices = Characters.id
-    cachoices = Campaigns.id
 
     instance_name = StringField('Instance name',
         validators= [
@@ -49,8 +47,8 @@ class InstanceForm(FlaskForm):
             DataRequired(),
             Length(min=25)
         ])
-    campaign_id = SelectField(cachoices)
-    character_id = SelectField(cachoices)
+    campaign_id = SelectField(u'Campaign',coerce=int)
+    character_id = SelectField(u'Character', coerce=int)
     submit = SubmitField('Create')
 #--------------------------------------------------------------------------------------------
 class RegistrationForm(FlaskForm):
