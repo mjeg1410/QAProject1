@@ -156,4 +156,4 @@ def instance():
         print(form.errors)
 
 
-    return render_template('instance.html', title='Instance Creation', form=InstanceForm)
+    return render_template('instance.html', title='Instance Creation', form=form)
