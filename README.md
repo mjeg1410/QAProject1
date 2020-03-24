@@ -21,3 +21,12 @@ The table linked above gives a brief summary of threats to user information, pre
 
 
 ![Deployment Pipeline](CIpipe.png)
+
+<br>
+<br>
+Testing:<br>
+Test cases need to be created for:<br>
+Page redirect on submission <br>
+Page redirect on page redirect when not logged in accessing pages requiring it<br>
+Submission of data<br>
+Display of data<br>
